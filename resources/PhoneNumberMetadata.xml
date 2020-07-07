@@ -1960,12 +1960,8 @@
         <nationalNumberPattern>810\d{7}</nationalNumberPattern>
       </uan>
     </territory>
-<<<<<<< HEAD
 
     <!-- American Samoa (AS) -->
-=======
-    <!-- American Samoa -->
->>>>>>> SFR 525901 - restore Argentinian metadata to match the default version.
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T0202000004/en -->
     <territory id="AS" countryCode="1" leadingDigits="684" internationalPrefix="011"
