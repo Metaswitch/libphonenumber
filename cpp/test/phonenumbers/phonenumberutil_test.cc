@@ -559,10 +559,10 @@ TEST_F(PhoneNumberUtilTest, FormatGBNumber) {
   test_number.set_country_code(44);
   test_number.set_national_number(uint64{2087389353});
   phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
-  EXPECT_EQ("(020) 8738 9356", formatted_number);
+  EXPECT_EQ("(020) 8738 9353", formatted_number);
   phone_util_.Format(test_number, PhoneNumberUtil::INTERNATIONAL,
                      &formatted_number);
-  EXPECT_EQ("+44 20 8738 9356", formatted_number);
+  EXPECT_EQ("+44 20 8738 9353", formatted_number);
 
   test_number.set_national_number(uint64{7912345678});
   phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
@@ -633,8 +633,12 @@ TEST_F(PhoneNumberUtilTest, FormatDENumber) {
   // Note this number is correctly formatted without national prefix. Most of
   // the numbers that are treated as invalid numbers by the library are short
   // numbers, and they are usually not dialed with national prefix.
+  //
+  // METASWITCH-SPECIFIC CHANGE: Our version of libphonenumber attempts to
+  // add the default dialing prefix if we can't format a national number so
+  // this will end up with a 0 prepended to it.
   phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
-  EXPECT_EQ("1234", formatted_number);
+  EXPECT_EQ("01234", formatted_number);
   phone_util_.Format(test_number, PhoneNumberUtil::INTERNATIONAL,
                      &formatted_number);
   EXPECT_EQ("+49 1234", formatted_number);
@@ -830,9 +834,13 @@ TEST_F(PhoneNumberUtilTest, FormatOutOfCountryCallingNumber) {
   // Note this number is correctly formatted without national prefix. Most of
   // the numbers that are treated as invalid numbers by the library are short
   // numbers, and they are usually not dialed with national prefix.
+  //
+  // METASWITCH-SPECIFIC CHANGE: Our version of libphonenumber attempts to
+  // add the default dialing prefix if we can't format a national number so
+  // this will end up with a 0 prepended to it.
   phone_util_.FormatOutOfCountryCallingNumber(test_number, RegionCode::DE(),
                                               &formatted_number);
-  EXPECT_EQ("1234", formatted_number);
+  EXPECT_EQ("01234", formatted_number);
   test_number.set_country_code(39);
   test_number.set_national_number(uint64{236618300});
   test_number.set_italian_leading_zero(true);
