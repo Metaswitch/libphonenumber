@@ -68,7 +68,7 @@ bool DispatchRE2Call(Function regex_function,
                      string* out5,
                      string* out6) {
   const RE2::Arg outs[] = { out1, out2, out3, out4, out5, out6};
-  const RE2::Arg* const args[] = {&outs[0], &outs[1], &outs[2], 
+  const RE2::Arg* const args[] = {&outs[0], &outs[1], &outs[2],
                                   &outs[3], &outs[4], &outs[5]};
   const int argc =
       out6 ? 6 : out5 ? 5 : out4 ? 4 : out3 ? 3 : out2 ? 2 : out1 ? 1 : 0;
