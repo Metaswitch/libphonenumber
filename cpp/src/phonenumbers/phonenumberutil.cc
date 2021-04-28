@@ -2427,7 +2427,7 @@ bool PhoneNumberUtil::IsPossibleNationalNumber(
   // revisited if the possible number pattern ever differed between various
   // regions within those plans.
   if (!HasValidCountryCallingCode(country_code)) {
-    return INVALID_COUNTRY_CODE;
+    return false;
   }
   string region_code;
   GetRegionCodeForCountryCode(country_code, &region_code);
