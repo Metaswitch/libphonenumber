@@ -9615,13 +9615,8 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [1-35689]\d{4}|
-          7\d{10,11}|
-          (?:
-            [124-7]\d|
-            3[0-46-9]
-          )\d{8}|
-          [1-9]\d{5,8}
+          1\d{4,11}|
+          [2-9]\d{4,10}
         </nationalNumberPattern>
       </generalDesc>
       <!-- According to the national numbering plan, service numbers are in general not accessible
