@@ -831,6 +831,7 @@ PhoneNumberUtil::PhoneNumberUtil()
     LOG(DFATAL) << "Could not parse compiled-in metadata.";
     return;
   }
+
   // Storing data in a temporary map to make it easier to find other regions
   // that share a country calling code when inserting data.
   std::map<int, std::list<string>* > country_calling_code_to_region_map;
@@ -3325,6 +3326,19 @@ bool PhoneNumberUtil::FillInDefaultNumberFormat(
                                            metadata.national_prefix()+"$1");
   }
   return true;
+}
+
+void PhoneNumberUtil::OverrideNationalNumberPattern(int country_code, const string& number_pattern) const
+{
+  string region_code;
+  GetRegionCodeForCountryCode(country_code, &region_code);
+  std::map<string, PhoneMetadata>::iterator it =
+      region_to_metadata_map_->find(region_code);
+  if (it != region_to_metadata_map_->end()) {
+    PhoneMetadata* metadata = &it->second;
+    metadata->mutable_general_desc()->set_national_number_pattern(number_pattern);
+  }
+  return;
 }
 
 }  // namespace phonenumbers
