@@ -18314,7 +18314,7 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          2\d{5,7}|
+          2\d{5,8}|
           [3-9]\d{7,9}|
           1800\d{7,9}
         </nationalNumberPattern>
