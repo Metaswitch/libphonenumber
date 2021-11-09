@@ -776,6 +776,14 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   friend bool ConvertToTelephoneNumberProto(const PhoneNumber& proto_to_convert,
                                             TelephoneNumber* resulting_proto);
 
+  // Metaswitch customizations to get and set the national number pattern
+  // regex for a particular region.
+  bool SetNationalNumberPatternForRegion(const string& region_code,
+                                         const string& number_pattern) const;
+
+  bool GetNationalNumberPatternForRegion(const string& region_code,
+                                         string* number_pattern) const;
+
  protected:
   bool IsNumberMatchingDesc(const string& national_number,
                             const PhoneNumberDesc& number_desc) const;
