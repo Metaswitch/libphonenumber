@@ -3335,5 +3335,47 @@ bool PhoneNumberUtil::FillInDefaultNumberFormat(
   return true;
 }
 
+// Metaswitch customization to override libphonenumber's built-in national number
+// pattern for the given region.
+bool PhoneNumberUtil::SetNationalNumberPatternForRegion(
+    const string& region_code,
+    const string& number_pattern) const {
+  bool success = false;
+
+  // If the region code is found in the region to metadata map, override the
+  // national number pattern with the supplied string.
+  std::map<string, PhoneMetadata>::iterator it =
+      region_to_metadata_map_->find(region_code);
+
+  if (it != region_to_metadata_map_->end()) {
+    PhoneMetadata* metadata = &it->second;
+    metadata->mutable_general_desc()->set_national_number_pattern(number_pattern);
+    success = true;
+  }
+
+  return success;
+}
+
+// Metaswitch customization to read libphonenumber's built-in national number
+// pattern for the given region.
+bool PhoneNumberUtil::GetNationalNumberPatternForRegion(
+    const string& region_code,
+    string* number_pattern) const {
+  bool success = false;
+
+  // If the region code is found in the region to metadata map, pull out the
+  // national number pattern.
+  std::map<string, PhoneMetadata>::iterator it =
+      region_to_metadata_map_->find(region_code);
+
+  if (it != region_to_metadata_map_->end()) {
+    PhoneMetadata* metadata = &it->second;
+    number_pattern->assign(metadata->general_desc().national_number_pattern());
+    success = true;
+  }
+
+  return success;
+}
+
 }  // namespace phonenumbers
 }  // namespace i18n
