@@ -202,8 +202,9 @@ add_custom_command (
   DEPENDS ${PROTOBUF_SOURCES}
 )
 
+find_package(absl)
+
 if (${BUILD_GEOCODER} STREQUAL "ON")
-  find_package(absl)
 
   # Geocoding data cpp file generation
   set (TOOLS_DIR "${CMAKE_CURRENT_BINARY_DIR}/tools")
