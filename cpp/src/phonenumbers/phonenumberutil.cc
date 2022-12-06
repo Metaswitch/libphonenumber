@@ -3453,6 +3453,22 @@ bool PhoneNumberUtil::SetNationalNumberPatternForRegion(
   if (it != region_to_metadata_map_->end()) {
     PhoneMetadata* metadata = &it->second;
     metadata->mutable_general_desc()->set_national_number_pattern(number_pattern);
+
+    // As well as a national number pattern, the general_desc also contains a
+    // set of possible number lengths, which is generated from the possibleLengths
+    // element on each of the number types (fixedLine, mobile, etc) in the
+    // metadata.  This is used in TestNumberLength when parsing a phone number.
+    //
+    // Ideally, when overriding the national number pattern we would also generate
+    // a new set of valid lengths, but it would be awkward to do that directly
+    // from the regex.  So instead, just set every length to be possible,
+    // and rely on the regex itself to police whether a number is actually valid.
+    // This is ugly but it works for Metaswitch's usage of libphonenumber.
+    for (size_t i = kMinLengthForNsn; i <= kMaxLengthForNsn; i++)
+    {
+      metadata->mutable_general_desc()->add_possible_length(i);
+    }
+
     success = true;
   }
 
