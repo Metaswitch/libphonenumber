@@ -3434,7 +3434,7 @@ bool PhoneNumberUtil::SetNationalNumberPatternForRegion(
 
   // If the region code is found in the region to metadata map, override the
   // national number pattern with the supplied string.
-  std::map<string, PhoneMetadata>::iterator it =
+  absl::lts_20220623::container_internal::raw_hash_set<absl::lts_20220623::container_internal::NodeHashMapPolicy<std::basic_string<char>, i18n::phonenumbers::PhoneMetadata>, absl::lts_20220623::container_internal::StringHash, absl::lts_20220623::container_internal::StringEq, std::allocator<std::pair<const std::basic_string<char>, i18n::phonenumbers::PhoneMetadata> > >::iterator it =
       region_to_metadata_map_->find(region_code);
 
   if (it != region_to_metadata_map_->end()) {
@@ -3471,7 +3471,7 @@ bool PhoneNumberUtil::GetNationalNumberPatternForRegion(
 
   // If the region code is found in the region to metadata map, pull out the
   // national number pattern.
-  std::map<string, PhoneMetadata>::iterator it =
+  absl::lts_20220623::container_internal::raw_hash_set<absl::lts_20220623::container_internal::NodeHashMapPolicy<std::basic_string<char>, i18n::phonenumbers::PhoneMetadata>, absl::lts_20220623::container_internal::StringHash, absl::lts_20220623::container_internal::StringEq, std::allocator<std::pair<const std::basic_string<char>, i18n::phonenumbers::PhoneMetadata> > >::iterator it =
       region_to_metadata_map_->find(region_code);
 
   if (it != region_to_metadata_map_->end()) {
