@@ -1821,7 +1821,10 @@ void PhoneNumberUtil::FormatNsnUsingPatternWithCarrier(
 
   const RegExp& pattern_to_match(
       reg_exps_->regexp_cache_->GetRegExp(formatting_pattern.pattern()));
-  pattern_to_match.GlobalReplace(formatted_number, number_format_rule);
+  // MSW customization SFR 581056 - don't apply the number format more than
+  // once.  See SFR for full details.  Code was originally
+  // pattern_to_match.GlobalReplace(formatted_number, number_format_rule);
+  pattern_to_match.Replace(formatted_number, number_format_rule);
 
   if (number_format == RFC3966) {
     // First consume any leading punctuation, if any was present.
