@@ -1010,8 +1010,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const PhoneMetadata& metadata,
       const RepeatedPtrField<NumberFormat> available_formats,
       NumberFormat* formatting_pattern) const ;
-
-  DISALLOW_COPY_AND_ASSIGN(PhoneNumberUtil);
 };
 
 }  // namespace phonenumbers
