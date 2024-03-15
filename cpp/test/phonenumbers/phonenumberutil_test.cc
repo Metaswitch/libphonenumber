@@ -952,7 +952,7 @@ TEST_F(PhoneNumberUtilTest, FormatOutOfCountryWithPreferredIntlPrefix) {
   phone_util_.FormatOutOfCountryCallingNumber(test_number, RegionCode::AU(),
                                               &formatted_number);
   EXPECT_EQ("0011 39 02 3661 8300", formatted_number);
-  
+
   // Testing preferred international prefixes with ~ are supported (designates
   // waiting).
   phone_util_.FormatOutOfCountryCallingNumber(test_number, RegionCode::UZ(),
@@ -4671,7 +4671,7 @@ TEST_F(PhoneNumberUtilTest, TestParseHandlesShortExtensionsWithAmbiguousChar) {
   nz_number.set_country_code(64);
   nz_number.set_national_number(33316005ULL);
   PhoneNumber test_number;
-  nz_number.set_extension("123456789");// 
+  nz_number.set_extension("123456789");//
 
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("03 3316005 x 123456789", RegionCode::NZ(),
@@ -4836,13 +4836,13 @@ TEST_F(PhoneNumberUtilTest, ParseWithPhoneContext) {
 
   // Valid global-phone-digits
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("tel:033316005;phone-context=+64",
+            phone_util_.Parse("tel:33316005;phone-context=+64",
                               RegionCode::ZZ(), &actual_number));
   EXPECT_EQ(expected_number, actual_number);
   actual_number.Clear();
 
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("tel:033316005;phone-context=+64;{this isn't "
+            phone_util_.Parse("tel:33316005;phone-context=+64;{this isn't "
                               "part of phone-context anymore!}",
                               RegionCode::ZZ(), &actual_number));
   EXPECT_EQ(expected_number, actual_number);
