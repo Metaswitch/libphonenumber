@@ -16,13 +16,13 @@
 
 #include "phonenumbers/geocoding/geocoding_test_data.h"
 
-#include "phonenumbers/base/basictypes.h"
+#include <cstdint>
 
 namespace i18n {
 namespace phonenumbers {
 namespace {
 
-const int32 prefix_82_ko_prefixes[] = {
+const int32_t prefix_82_ko_prefixes[] = {
   822,
   8231,
   8232,
@@ -58,7 +58,7 @@ const char* prefix_82_ko_descriptions[] = {
   "\xec""\xa0""\x84""\xeb""\xb6""\x81",
 };
 
-const int32 prefix_82_ko_possible_lengths[] = {
+const int32_t prefix_82_ko_possible_lengths[] = {
   3, 4,
 };
 
@@ -70,7 +70,7 @@ const PrefixDescriptions prefix_82_ko = {
   sizeof(prefix_82_ko_possible_lengths)/sizeof(*prefix_82_ko_possible_lengths),
 };
 
-const int32 prefix_82_en_prefixes[] = {
+const int32_t prefix_82_en_prefixes[] = {
   822,
   8210,
   8231,
@@ -110,7 +110,7 @@ const char* prefix_82_en_descriptions[] = {
   "Jeju",
 };
 
-const int32 prefix_82_en_possible_lengths[] = {
+const int32_t prefix_82_en_possible_lengths[] = {
   3, 4,
 };
 
@@ -122,7 +122,7 @@ const PrefixDescriptions prefix_82_en = {
   sizeof(prefix_82_en_possible_lengths)/sizeof(*prefix_82_en_possible_lengths),
 };
 
-const int32 prefix_54_en_prefixes[] = {
+const int32_t prefix_54_en_prefixes[] = {
   542214,
 };
 
@@ -130,7 +130,7 @@ const char* prefix_54_en_descriptions[] = {
   "La Plata",
 };
 
-const int32 prefix_54_en_possible_lengths[] = {
+const int32_t prefix_54_en_possible_lengths[] = {
   6,
 };
 
@@ -142,7 +142,7 @@ const PrefixDescriptions prefix_54_en = {
   sizeof(prefix_54_en_possible_lengths)/sizeof(*prefix_54_en_possible_lengths),
 };
 
-const int32 prefix_1_en_prefixes[] = {
+const int32_t prefix_1_en_prefixes[] = {
   1201,
   1212,
   1650,
@@ -162,7 +162,7 @@ const char* prefix_1_en_descriptions[] = {
   "Mountain View, CA",
 };
 
-const int32 prefix_1_en_possible_lengths[] = {
+const int32_t prefix_1_en_possible_lengths[] = {
   4, 7,
 };
 
@@ -174,7 +174,7 @@ const PrefixDescriptions prefix_1_en = {
   sizeof(prefix_1_en_possible_lengths)/sizeof(*prefix_1_en_possible_lengths),
 };
 
-const int32 prefix_1_de_prefixes[] = {
+const int32_t prefix_1_de_prefixes[] = {
   1201,
   1650,
 };
@@ -184,7 +184,7 @@ const char* prefix_1_de_descriptions[] = {
   "Kalifornien",
 };
 
-const int32 prefix_1_de_possible_lengths[] = {
+const int32_t prefix_1_de_possible_lengths[] = {
   4,
 };
 
